@@ -2,26 +2,18 @@ import { graphql } from "react-relay";
 import { Environment, RecordSourceSelectorProxy } from "relay-runtime";
 
 import { getQueueConnection } from "coral-admin/helpers";
-import { SectionFilter } from "coral-common/section";
 import {
   createSubscription,
   requestSubscription,
   SubscriptionVariables,
 } from "coral-framework/lib/relay";
-import {
-  GQLCOMMENT_SORT_RL,
-  GQLMODERATION_QUEUE_RL,
-} from "coral-framework/schema";
+import { GQLMODERATION_QUEUE_RL } from "coral-framework/schema";
 
 import { QueueCommentLeftSubscription } from "coral-admin/__generated__/QueueCommentLeftSubscription.graphql";
 
 function handleCommentLeftModerationQueue(
   store: RecordSourceSelectorProxy<unknown>,
-  queue: GQLMODERATION_QUEUE_RL,
-  storyID: string | null,
-  siteID: string | null,
-  orderBy?: GQLCOMMENT_SORT_RL | null,
-  section?: SectionFilter | null
+  queue: GQLMODERATION_QUEUE_RL
 ) {
   const rootField = store.getRootField("commentLeftModerationQueue");
   if (!rootField) {
@@ -33,14 +25,7 @@ function handleCommentLeftModerationQueue(
     .getValue("id")! as string;
   // Mark that the status of the comment was live updated.
   comment.setValue(true, "statusLiveUpdated");
-  const connection = getQueueConnection(
-    store,
-    queue,
-    storyID,
-    siteID,
-    orderBy,
-    section
-  );
+  const connection = getQueueConnection(store, queue);
   if (connection) {
     const linked = connection.getLinkedRecords("viewNewEdges") || [];
     connection.setLinkedRecords(
@@ -85,14 +70,7 @@ const QueueSubscription = createSubscription(
       `,
       variables,
       updater: (store) => {
-        handleCommentLeftModerationQueue(
-          store,
-          variables.queue,
-          variables.storyID || null,
-          variables.siteID || null,
-          variables.orderBy || null,
-          variables.section
-        );
+        handleCommentLeftModerationQueue(store, variables.queue);
       },
     })
 );

@@ -5,45 +5,20 @@ import {
   RecordSourceSelectorProxy,
 } from "relay-runtime";
 
-import { SectionFilter } from "coral-common/section";
-import {
-  GQLCOMMENT_SORT_RL,
-  GQLCOMMENT_STATUS,
-  GQLMODERATION_QUEUE_RL,
-} from "coral-framework/schema";
+import { GQLMODERATION_QUEUE_RL } from "coral-framework/schema";
 
 export default function getQueueConnection(
   store: RecordSourceSelectorProxy | RecordSourceProxy,
-  queue: GQLMODERATION_QUEUE_RL | "REJECTED" | "APPROVED",
-  storyID?: string | null,
-  siteID?: string | null,
-  orderBy?: GQLCOMMENT_SORT_RL | null,
-  section?: SectionFilter | null
+  queue: GQLMODERATION_QUEUE_RL | "REJECTED" | "APPROVED"
 ): RecordProxy | null | undefined {
   const root = store.getRoot();
   if (queue === "REJECTED") {
-    return ConnectionHandler.getConnection(root, "RejectedQueue_comments", {
-      status: GQLCOMMENT_STATUS.REJECTED,
-      storyID,
-      siteID,
-      orderBy,
-      section,
-    });
+    return ConnectionHandler.getConnection(root, "RejectedQueue_comments");
   }
   if (queue === "APPROVED") {
-    return ConnectionHandler.getConnection(root, "ApprovedQueue_comments", {
-      status: GQLCOMMENT_STATUS.APPROVED,
-      storyID,
-      siteID,
-      orderBy,
-      section,
-    });
+    return ConnectionHandler.getConnection(root, "ApprovedQueue_comments");
   }
-  const queuesRecord = root.getLinkedRecord("moderationQueues", {
-    storyID,
-    siteID,
-    section,
-  })!;
+  const queuesRecord = root.getLinkedRecord("moderationQueues")!;
   if (!queuesRecord) {
     return undefined;
   }

@@ -2,18 +2,13 @@ import { graphql } from "react-relay";
 import { ConnectionHandler, Environment } from "relay-runtime";
 
 import { getQueueConnection } from "coral-admin/helpers";
-import { SectionFilter } from "coral-common/section";
 import { CoralContext } from "coral-framework/lib/bootstrap";
 import {
   commitMutationPromiseNormalized,
   createMutation,
   MutationInput,
 } from "coral-framework/lib/relay";
-import {
-  GQLCOMMENT_SORT,
-  GQLCOMMENT_STATUS,
-  GQLTAG,
-} from "coral-framework/schema";
+import { GQLCOMMENT_STATUS, GQLTAG } from "coral-framework/schema";
 
 import { FeatureCommentMutation } from "coral-admin/__generated__/FeatureCommentMutation.graphql";
 
@@ -25,9 +20,6 @@ const FeatureCommentMutation = createMutation(
     environment: Environment,
     input: MutationInput<FeatureCommentMutation> & {
       storyID?: string | null;
-      siteID?: string | null;
-      section?: SectionFilter | null;
-      orderBy?: GQLCOMMENT_SORT | null;
     },
     { uuidGenerator }: CoralContext
   ) =>
@@ -79,38 +71,10 @@ const FeatureCommentMutation = createMutation(
       },
       updater: (store) => {
         const connections = [
-          getQueueConnection(
-            store,
-            "PENDING",
-            input.storyID,
-            input.siteID,
-            input.orderBy,
-            input.section
-          ),
-          getQueueConnection(
-            store,
-            "REPORTED",
-            input.storyID,
-            input.siteID,
-            input.orderBy,
-            input.section
-          ),
-          getQueueConnection(
-            store,
-            "UNMODERATED",
-            input.storyID,
-            input.siteID,
-            input.orderBy,
-            input.section
-          ),
-          getQueueConnection(
-            store,
-            "REJECTED",
-            input.storyID,
-            input.siteID,
-            input.orderBy,
-            input.section
-          ),
+          getQueueConnection(store, "PENDING"),
+          getQueueConnection(store, "REPORTED"),
+          getQueueConnection(store, "UNMODERATED"),
+          getQueueConnection(store, "REJECTED"),
         ].filter((c) => c);
         connections.forEach((con) =>
           ConnectionHandler.deleteNode(con!, input.commentID)

@@ -96,12 +96,9 @@ export const QueueRoute: FunctionComponent<Props> = ({
   const onViewNew = useCallback(() => {
     void viewNew({
       queue: queueName,
-      storyID,
-      siteID,
-      section,
       orderBy,
     });
-  }, [viewNew, queueName, storyID, siteID, section, orderBy]);
+  }, [viewNew, queueName, orderBy]);
 
   // Handle subscribing and unsubscribing to the subscriptions.
   useEffect(() => {

@@ -1,7 +1,6 @@
 import { ConnectionHandler, Environment } from "relay-runtime";
 
 import { getQueueConnection } from "coral-admin/helpers";
-import { SectionFilter } from "coral-common/section";
 import {
   commitLocalUpdatePromisified,
   createMutation,
@@ -9,9 +8,6 @@ import {
 import { GQLCOMMENT_SORT, GQLMODERATION_QUEUE } from "coral-framework/schema";
 
 interface QueueViewNewInput {
-  storyID: string | null;
-  siteID: string | null;
-  section?: SectionFilter | null;
   queue: GQLMODERATION_QUEUE;
   orderBy: GQLCOMMENT_SORT;
 }
@@ -20,14 +16,7 @@ const QueueViewNewMutation = createMutation(
   "viewNew",
   async (environment: Environment, input: QueueViewNewInput) => {
     await commitLocalUpdatePromisified(environment, async (store) => {
-      const connection = getQueueConnection(
-        store,
-        input.queue,
-        input.storyID,
-        input.siteID,
-        input.orderBy,
-        input.section
-      );
+      const connection = getQueueConnection(store, input.queue);
       if (!connection) {
         return;
       }

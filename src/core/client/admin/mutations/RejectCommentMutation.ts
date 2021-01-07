@@ -102,38 +102,10 @@ const RejectCommentMutation = createMutation(
         proxy.setValue(true, "viewerDidModerate");
 
         const connections = [
-          getQueueConnection(
-            store,
-            "REPORTED",
-            input.storyID,
-            input.siteID,
-            input.orderBy,
-            input.section
-          ),
-          getQueueConnection(
-            store,
-            "PENDING",
-            input.storyID,
-            input.siteID,
-            input.orderBy,
-            input.section
-          ),
-          getQueueConnection(
-            store,
-            "UNMODERATED",
-            input.storyID,
-            input.siteID,
-            input.orderBy,
-            input.section
-          ),
-          getQueueConnection(
-            store,
-            "APPROVED",
-            input.storyID,
-            input.siteID,
-            input.orderBy,
-            input.section
-          ),
+          getQueueConnection(store, "REPORTED"),
+          getQueueConnection(store, "PENDING"),
+          getQueueConnection(store, "UNMODERATED"),
+          getQueueConnection(store, "APPROVED"),
         ].filter((c) => c);
         connections.forEach((con) =>
           ConnectionHandler.deleteNode(con!, input.commentID)

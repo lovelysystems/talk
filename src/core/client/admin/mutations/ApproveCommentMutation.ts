@@ -8,7 +8,6 @@ import {
   createMutation,
   MutationInput,
 } from "coral-framework/lib/relay";
-import { GQLCOMMENT_SORT } from "coral-framework/schema";
 
 import { ApproveCommentMutation as MutationTypes } from "coral-admin/__generated__/ApproveCommentMutation.graphql";
 
@@ -22,7 +21,6 @@ const ApproveCommentMutation = createMutation(
       storyID?: string | null;
       siteID?: string | null;
       section?: SectionFilter | null;
-      orderBy?: GQLCOMMENT_SORT | null;
     }
   ) =>
     commitMutationPromiseNormalized<MutationTypes>(environment, {
@@ -102,38 +100,10 @@ const ApproveCommentMutation = createMutation(
         proxy.setValue(true, "viewerDidModerate");
 
         const connections = [
-          getQueueConnection(
-            store,
-            "REPORTED",
-            input.storyID,
-            input.siteID,
-            input.orderBy,
-            input.section
-          ),
-          getQueueConnection(
-            store,
-            "PENDING",
-            input.storyID,
-            input.siteID,
-            input.orderBy,
-            input.section
-          ),
-          getQueueConnection(
-            store,
-            "UNMODERATED",
-            input.storyID,
-            input.siteID,
-            input.orderBy,
-            input.section
-          ),
-          getQueueConnection(
-            store,
-            "REJECTED",
-            input.storyID,
-            input.siteID,
-            input.orderBy,
-            input.section
-          ),
+          getQueueConnection(store, "REPORTED"),
+          getQueueConnection(store, "PENDING"),
+          getQueueConnection(store, "UNMODERATED"),
+          getQueueConnection(store, "REJECTED"),
         ].filter((c) => c);
         connections.forEach((con) =>
           ConnectionHandler.deleteNode(con!, input.commentID)
