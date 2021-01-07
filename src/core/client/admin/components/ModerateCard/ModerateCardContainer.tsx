@@ -164,14 +164,12 @@ const ModerateCardContainer: FunctionComponent<Props> = ({
       return;
     }
 
-    const { storyID, siteID, section } = parseModerationOptions(match);
+    const { storyID } = parseModerationOptions(match);
 
     void featureComment({
       commentID: comment.id,
       commentRevisionID: comment.revision.id,
       storyID,
-      siteID,
-      section,
     });
   }, [featureComment, comment, match, readOnly]);
 
