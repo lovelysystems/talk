@@ -47,8 +47,6 @@ comment-count-text =
   
 ## Comments Tab
 
-comments-stream-loadMore = Mehr laden
-
 comments-commentForm-submit = Posten
 comments-allCommentsTab = Alle Kommentare
 comments-featuredTab = Featured
