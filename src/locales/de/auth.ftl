@@ -23,7 +23,7 @@ general-confirmEmailAddressTextField =
 ## Sign In
 
 signIn-signInToJoinHeader =
-  <title>Sign in</title><subtitle>to join the conversation<subtitle>
+  <title>Anmelden</title><subtitle>um an der Diskussion teilzunehmen<subtitle>
 
 signIn-signInWithEmail = Mit Email anmelden
 signIn-signInWithFacebook = Mit Facebook anmelden
@@ -36,26 +36,26 @@ signIn-passwordTextField =
 
 signIn-forgotYourPassword = Passwort vergessen?
 
-signIn-noAccountSignUp = Don't have an account? <textlink>Sign up</textlink>
+signIn-noAccountSignUp = Noch keinen Account? <textlink>Registrieren</textlink>
 
 ## Sign Up
 
 signUp-signUpToJoinHeader =
-  <title>Sign up</title><subtitle>to join the conversation</subtitle>
+  <title>Registrieren</title><subtitle>um an der Diskussion teilzunehmen</subtitle>
 
 signUp-signUpWithEmail = Mit Email registrieren
 signUp-signUpWithFacebook = Mit Facebook registrieren
 signUp-signUpWithGoogle = Mit Google registrieren
 signUp-signUpWithOIDC = Mit { $name } registrieren
 
-signUp-accountAvailableSignIn = Sie haben schon einen Account? <textlink>Anmelden</textlink>
+signUp-accountAvailableSignIn = Du hast schon einen Account? <textlink>Anmelden</textlink>
 
 ## Forgot Password
 
 forgotPassword-forgotPasswordHeader = Passwort vergessen?
 forgotPassword-enterEmailAndGetALink =
-  Enter your email address below and we will send you a link to
-  reset your password.
+  Bitte gib deine Email Adresse unten ein und wir senden
+  dir einen Link zum Zurücksetzen deines Passwortes zu.
 
 forgotPassword-sendEmailButton = Email senden
 
@@ -65,29 +65,30 @@ forgotPassword-emailAddressTextField =
 forgotPassword-gotBackToSignIn = Zurück zur Anmeldeseite
 
 forgotPassword-enterEmailAndGetALink =
-  Enter your email address below and we will send you a link to
-  reset your password.
+  Bitte gib deine Email Adresse unten ein und wir senden
+  dir einen Link zum Zurücksetzen deines Passwortes zu.
 
 # Check Email
 
-forgotPassword-checkEmail-checkEmailHeader = Check your email
+forgotPassword-checkEmail-checkEmailHeader = 
+	Bitte überprüfe deine Email
 forgotPassword-checkEmail-receiveEmail =
-  If there is an account associated with <email></email>,
-  you will receive an email with a link to create a new password.
+  Wenn ein Account mit <email></email> existiert, wirst du eine
+  Email mit einem Link erhalten, um ein neues Passwort zu erstellen.
 forgotPassword-checkEmail-closeButton = Schliessen
 
 ## Link Account
 
-linkAccount-linkAccountHeader = Link account
+linkAccount-linkAccountHeader = Account verknüpfen
 linkAccount-alreadyAssociated =
-  The email <strong>{ $email }</strong> is
-  already associated with an account. If you would like to
-  link these enter your password.
+  Die Email Adresse <strong>{ $email }</strong> ist bereits
+  einem Account zugewiesen. Wenn du diese verknüpfen willst, gib
+  bitte dein Passwort ein.
 linkAccount-passwordLabel = Passwort
 linkAccount-passwordTextField =
   .label = Passwort
-linkAccount-linkAccountButton = Link account
-linkAccount-useDifferentEmail = Use a different email address
+linkAccount-linkAccountButton = Account verknüpfen
+linkAccount-useDifferentEmail = Andere Email Adresse verwenden
 
 ## Reset Password
 
@@ -97,36 +98,37 @@ resetPassword-resetPasswordButton = Passwort zurücksetzen
 ## Create Username
 
 createUsername-createUsernameHeader =
-createUsername-createAUsername = Create a username
+createUsername-createAUsername = Benutzername erstellen
 createUsername-whatItIs =
-  Your username is an identifier that will appear on all of your comments.
-createUsername-createUsernameButton = Create username
+  Dein Benutzername wird bei all deinen Kommentaren angezeigt.
+createUsername-createUsernameButton = Benutzername erstellen
 
 ## Add Email Address
-addEmailAddress-addEmailAddressHeader = Add email address
+addEmailAddress-addEmailAddressHeader = Email Adresse hinzufügen
 
 addEmailAddress-whatItIs =
-  For your added security, we require users to add an email address to their accounts.
-  Your email address will be used to:
+  Zu deiner Sicherheit müsst du deinem Account eine Email Adresse hinzufügen.
+  Deine Email Adresse wird verwendet, damit du:
 
 addEmailAddress-receiveUpdates =
-  Receive updates regarding any changes to your account
-  (email address, username, password, etc.)
+  Erhalte Updates bezüglich Änderungen an deinem Account
+  (Email Adresse, Benutzername, Passwort, usw.)
 
 addEmailAddress-allowDownload =
-  Allow you to download your comments.
+  Erlaube den Download deiner Kommentare.
 
 addEmailAddress-sendNotifications =
-  Send comment notifications that you have chosen to receive.
+  Senden von Kommentar-Benachrichtigungen, welche du ausgewählt hast,
+  zu erhalten.
 
 addEmailAddress-addEmailAddressButton =
-  Add email address
+  Email Adresse hinzufügen.
 
 ## Create Password
 createPassword-createPasswordHeader =
-createPassword-createAPassword = Create a password
+createPassword-createAPassword = Passwort erstellen
 createPassword-whatItIs =
-  To protect against unauthorized changes to your account,
-  we require users to create a password.
+  Um dich vor unautorisierten Zugriffen auf dein Konto zu schützen,
+  müsst du ein Passwort setzen.
 createPassword-createPasswordButton =
-  Create password
+  Passwort erstellen
