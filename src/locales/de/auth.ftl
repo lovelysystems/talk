@@ -71,7 +71,7 @@ forgotPassword-enterEmailAndGetALink =
 # Check Email
 
 forgotPassword-checkEmail-checkEmailHeader = 
-	Bitte überprüfe deine Email
+  Bitte überprüfe deine Email
 forgotPassword-checkEmail-receiveEmail =
   Wenn ein Account mit <email></email> existiert, wirst du eine
   Email mit einem Link erhalten, um ein neues Passwort zu erstellen.
